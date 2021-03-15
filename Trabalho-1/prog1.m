@@ -1,5 +1,10 @@
+% author: Gabriel S. C. Nogueira
+% e-mail: gab.nog94@gmail.com
+% github: https://github.com/nosgueira
+
 clear all
 close all
+clc
 % carrega pacote image no octave, caso necessário, comentar;
 pkg load image
 
