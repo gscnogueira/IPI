@@ -74,7 +74,7 @@ title(sprintf( 'Imagem original (%dx%d px)',size(Im)(1), size(Im)(2) ), 'FontSiz
 pause
 
 % Aplica filtro de aguçamento na primeira imagem interpolada
-ImintAgu=edge_improv(Imint);
+ImintAgu=edge_improv(Imint,0.3);
 
 % Compara a imagem antes e depois do filtro de aguçamento ser aplicado
 subplot(1,2,1)
@@ -86,7 +86,7 @@ title(sprintf( 'Imagem interpolada após aguçamento (%dx%d px)',size(ImintAgu)(
 pause
 
 % Aplica filtro de aguçamento na imagem que sofreu interpolação bicúbica
-Imint2Agu=edge_improv(Imint2);
+Imint2Agu=edge_improv(Imint2,1);
 
 % Compara a imagem antes e depois do filtro de aguçamento ser aplicado
 subplot(1,2,1)
