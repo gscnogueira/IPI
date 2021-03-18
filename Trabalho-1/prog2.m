@@ -12,9 +12,8 @@ Car=imread("car.png");
 Crowd=imread("crowd.png");
 Uni=imread("university.png");
 
-% 2.1 Testar o realce power-law (correção gamma) com pelos menos 2 valores diferentes maiores que um  e 2 valores diferentes menores que um, para cada imagem (justifique porque a decisão de utilizar valores positivos ou negativos no relatório). Mostrar o melhor resultado 
 
-% definindo 4 valores de coeficiente gamma para a aplicação das técnicas power-law:
+% define 4 valores de coeficiente gamma para a aplicação das técnicas power-law:
 
 % gamma>1:
 gamma1=4;
@@ -27,113 +26,59 @@ gamma4=0.1;
 % Aplica os 4 coeficientes diferentes na imagem car.png
 
 realceCar1=imadjust(Car, [],[],gamma1);
+realceCar2=imadjust(Car, [],[],gamma2);
+realceCar3=imadjust(Car, [],[],gamma3);
+realceCar4=imadjust(Car, [],[],gamma4);
 
+% Mostra melhor resultado obtido ao lado a imagem original
 subplot(1,2,1)
 imshow(Car);
 title("Imagem original", 'fontsize', 14);
 subplot(1,2,2)
-imshow(realceCar1)
-str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma1);
-title(str, 'fontsize', 14,'interpreter', 'tex');
-
-
-realceCar2=imadjust(Car, [],[],gamma2);
-pause
-
-subplot(1,2,2)
 imshow(realceCar2)
-title(sprintf("correção gamma ({\\gamma} = %.1f)",gamma2), 'fontsize', 14);
-
-realceCar3=imadjust(Car, [],[],gamma3);
+str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma2);
+title(str, 'fontsize', 14,'interpreter', 'tex');
 pause
 
-subplot(1,2,2)
-imshow(realceCar3)
-title(sprintf("correção gamma ({\\gamma} = %.1f)",gamma3), 'fontsize', 14);
-
-realceCar4=imadjust(Car, [],[],gamma4);
-pause
-
-subplot(1,2,2)
-imshow(realceCar4)
-title(sprintf("correção gamma ({\\gamma} = %.1f)",gamma4), 'fontsize', 14);
-pause
 
 % Aplica os 4 coeficientes diferentes na imagem crowd.png
-
 realceCrowd1=imadjust(Crowd, [],[], gamma1);
+realceCrowd2=imadjust(Crowd, [],[], gamma2);
+realceCrowd3=imadjust(Crowd, [],[], gamma3);
+realceCrowd4=imadjust(Crowd, [],[], gamma4);
 
+% Mostra melhor resultado obtido ao lado a imagem original
 subplot(1,2,1)
 imshow(Crowd);
 title("Imagem original", 'fontsize', 14);
 subplot(1,2,2)
-imshow(realceCrowd1)
-str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma1);
-title(str, 'fontsize', 14,'interpreter', 'tex');
-
-
-realceCrowd2=imadjust(Crowd, [],[], gamma2);
-pause
-
-subplot(1,2,2)
-imshow(realceCrowd2)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma2), 'fontsize', 14);
-
-realceCrowd3=imadjust(Crowd, [],[], gamma3);
-pause
-
-subplot(1,2,2)
 imshow(realceCrowd3)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma3), 'fontsize', 14);
-
-realceCrowd4=imadjust(Crowd, [],[], gamma4);
-pause
-
-subplot(1,2,2)
-imshow(realceCrowd4)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma4), 'fontsize', 14);
+str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma3);
+title(str, 'fontsize', 14,'interpreter', 'tex');
 pause
 
 % Aplica os 4 coeficientes diferentes na imagem university.png
-
 realceUni1=imadjust(Uni, [],[], gamma1);
+realceUni2=imadjust(Uni, [],[], gamma2);
+realceUni3=imadjust(Uni, [],[], gamma3);
+realceUni4=imadjust(Uni, [],[], gamma4);
 
+% Mostra melhor resultado obtido ao lado a imagem original
 subplot(1,2,1)
 imshow(Uni);
 title("Imagem original", 'fontsize', 14);
 subplot(1,2,2)
-imshow(realceUni1)
-str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma1);
-title(str, 'fontsize', 14,'interpreter', 'tex');
-
-
-realceUni2=imadjust(Uni, [],[], gamma2);
-pause
-
-subplot(1,2,2)
-imshow(realceUni2)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma2), 'fontsize', 14);
-
-realceUni3=imadjust(Uni, [],[], gamma3);
-pause
-
-subplot(1,2,2)
 imshow(realceUni3)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma3), 'fontsize', 14);
-
-realceUni4=imadjust(Uni, [],[], gamma4);
+str=sprintf('Correção gamma ({\\gamma} = %.1f)',gamma3);
+title(str, 'fontsize', 14,'interpreter', 'tex');
 pause
 
-subplot(1,2,2)
-imshow(realceUni4)
-title(sprintf("Correção gamma ({\\gamma} = %.1f)",gamma4), 'fontsize', 14);
-pause
+% A função im2uint8 é utilizada em código abaixo, pois a implementação da função histeq() feita pelo GNU Octave retorna uma matriz de números reais entre 0 e 1.
 
-
-% 2.2) Equalizar as três imagens, mostrar o resultado das três imagens. E de uma delas mostrar o histograma e CDF (função de distribuição acumulada) antes e depois da equalização.
-
+% Equaliza a imagem crowd.png
 Crowdeq=im2uint8(histeq(Crowd) );
 
+% Mostra a imagem equalizada ao lado da imagem original
 subplot(1,2,1)
 imshow(Crowd)
 title("Imagem original", 'fontsize', 14);
@@ -142,8 +87,10 @@ imshow(Crowdeq);
 title("Imagem equalizada", 'fontsize', 14);
 pause;
 
+% Equaliza a imagem university.png
 Unieq=im2uint8(histeq(Uni));
 
+% Mostra a imagem equalizada ao lado da imagem original
 subplot(1,2,1)
 imshow(Uni)
 title("Imagem original", 'fontsize', 14);
@@ -152,8 +99,10 @@ imshow(Unieq);
 title("Imagem equalizada", 'fontsize', 14);
 pause;
 
+% Equaliza a imagem car.png
 Careq=im2uint8(histeq(Car));
 
+% Mostra a imagem equalizada ao lado da imagem original
 subplot(1,2,1)
 imshow(Car)
 title("Imagem original", 'fontsize', 14);
@@ -162,8 +111,7 @@ imshow(Careq);
 title("Imagem equalizada", 'fontsize', 14);
 pause;
 
-% calcula CDF para imagem original
-
+% calcula CDF para imagem car.png
 n1=length(Car(:)); 
 [nk1, rk1] = imhist(Car);
 ps1 = nk1/n1;
@@ -172,6 +120,7 @@ for i = 1:length(ps1)
     sk1(i) = sum(ps1(1:i));
 end
 
+% Mostra imagem car.png juntamente com seu respectivo histograma e CDF
 subplot(2,2,2);
 imhist(Car);
 title('Histograma','fontsize', 14)
@@ -184,7 +133,8 @@ ylabel('F(r_k)')
 pause;
 
 
-% calcula CDF para imagem equalizada
+% calcula CDF para imagem car.png equalizada
+n1=length(Car(:)); 
 
 n2=length(Careq(:));
 [nk2, rk2] = imhist(Careq);
@@ -193,6 +143,7 @@ for i = 1:length(ps2)
     sk2(i) = sum(ps2(1:i));
 end
 
+% Mostra imagem car.png equalizada juntamente com seu respectivo histograma e CDF
 subplot(1,2,1)
 imshow(Careq)
 title('Imagem equalizada','fontsize', 14)

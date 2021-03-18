@@ -97,4 +97,20 @@ imshow(Imint2Agu)
 title(sprintf( 'Imagem interpolada (interpolação bicúbica) após aguçamento (%dx%d px)',size(Imint2Agu)(1), size(Imint2Agu)(2) ), 'FontSize',14)
 pause
 
+% Aplica novo método de interpolação à imagem reduzida por dec_int
+% (o processo realizado pela função better_dec_int pode demorar em torno de um minuto)
+
+Imint3= better_dec_int(Imdec,2,0);
+subplot(1,2,1)
+imshow(Imdec)
+title(sprintf( 'Imagem reduzida (%dx%d px)',size(Imdec)(1), size(Imdec)(2) ), 'FontSize', 14)
+
+
+subplot(1,2,2)
+
+imshow(Imint3)
+title(sprintf( 'Imagem interpolada por meio de novo método (%dx%d px)',size(Imint3)(1), size(Imint3)(2) ), 'FontSize', 14)
+
+ pause;
+
 close all;

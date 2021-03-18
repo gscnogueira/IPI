@@ -1,5 +1,9 @@
-% Caso op!=0, a imagem (Im) é reduzida pelo faltor n;
-% Caso op==0, a imagem (Im) é interpolada pelo fator n;
+% author: Gabriel S. C. Nogueira
+% e-mail: gab.nog94@gmail.com
+% github: https://github.com/nosgueira
+
+% Diminui a imagem por um fator n, caso op!=0
+% Interpola a imagem por um fator n, caso op==0
 
 function f = dec_int(Im, n,op)
     [h,w,d] = size(Im);
