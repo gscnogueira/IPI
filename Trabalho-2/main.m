@@ -1,3 +1,8 @@
+## Aluno    : Gabriel da Silva Corvino Nogueira
+## Matrícula: 180113330
+## Semestre : 2020/2
+## Matéria  : Introdução ao Processamento de Imagens
+#####################################################
 
 close all;
 clear all;
@@ -13,3 +18,5 @@ imshow(letras, []);
 binarizada = letras > graythresh(letras);
 figure;
 imshow(binarizada, []);
+
+## 2.2 Reduzir variações no fundo da imagem
