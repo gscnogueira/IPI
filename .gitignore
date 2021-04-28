@@ -1,8 +1,8 @@
 *.pdf
 /Trabalho-1/*.jpg
-*.png
 /Trabalho-1/LaTex/
 /Trabalho-1/octave-workspace
 /Trabalho-1/180113330.zip
 /Trabalho-2/main.m~
 /Trabalho-2/octave-workspace
+/Trabalho-1/*.png
