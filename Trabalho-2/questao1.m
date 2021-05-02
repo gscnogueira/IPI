@@ -4,20 +4,22 @@
 ## Matéria  : Introdução ao Processamento de Imagens
 #####################################################
 
+pkg load image;
 close all;
 clear all;
-cd ~/Code/UnB/IPI/Trabalho-2/
 
 ## Questão 1:
 
 letras = im2double( imread('imagens/morf_test.png') );
 imshow(letras, []);
+pause;
 
 ## 2.1 Binarizar a imagem diretamente
 
 binarizada = letras > graythresh(letras);
 figure;
 imshow(binarizada, []);
+pause;
 
 ## 2.2 Reduzir variações no fundo da imagem
 
@@ -30,21 +32,26 @@ function suavizada = suaviza (Im, d)
 endfunction
 
 Im = suaviza(letras, 2); imshow(Im, []);
+pause;
 
 # Aplicação da transformação bottom-hat
-Im = imbothat(Im, strel('disk', 10, 0)); imshow(Im, []);
+Im = imbothat(Im, strel('disk', 10, 0));
 
 # A imagem é invertida
-Im = 1 - Im; imshow(Im, []);
+Im = 1 - Im;
 
 # Erosão e Dilatação são aplicadas na imagem
-Im = imerode(Im, strel('square', 3 )); imshow(Im, []);
-Im = imdilate(Im, strel('square', 2 )); imshow(Im, []);
+Im = imerode(Im, strel('square', 3 ));
+Im = imdilate(Im, strel('square', 2 ));
+imshow(Im, []);
+pause;
 
 # Binariza a imagem
 binarizada = Im > graythresh(Im);
 
 # Mostra a imagem
 imshow(binarizada,[]);
+pause;
+close all;
 
 
