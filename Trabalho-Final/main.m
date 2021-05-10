@@ -8,43 +8,53 @@ pkg load image;
 close all;
 clear all;
 
-cd ~/Code/UnB/IPI/Trabalho-Final/
+% Lê imagens de manchas de vitiligo
+vitiligo1 = imread("Imagens/Vitiligo1.jpg");
+vitiligo2 = imread("Imagens/Vitiligo2.jpg");
+vitiligo3 = imread("Imagens/Vitiligo3.png");
+vitiligo4 = imread("Imagens/Vitiligo4.png");
 
-% le imagem original
-original = imread("Imagens/Figura3.jpg");
-imshow(original);
-figure;
+brilho_vitiligo = [];
+brilho_pintas = [];
 
-% Transforma a imagem em níveis de cinza
-grayScale = rgb2gray(original);
-imshow(grayScale);
+% Segmenta as manchas de vitiligo do resto de suas respctivas imagens
+vitiligo1_seg = segmenta_vitiligo(vitiligo1, 1, 2, 10, 25, 10, 400);
+vitiligo2_seg = segmenta_vitiligo(vitiligo2, 0, 30, 1, 40, 4, 200);
+vitiligo3_seg = segmenta_vitiligo(vitiligo3, 1, 5, 5, 1, 5, 1700);
+vitiligo4_seg = segmenta_vitiligo(vitiligo4, 0, 5, 5, 15, 1, 0);
 
-% Aplica filtros de suavização na imagem em niveis de cinza
-Im = medfilt2(grayScale);
-Im = imsmooth(grayScale);
-imshow(Im);
+% Lê imagens de pintas
+pinta1 = imread("Imagens/Pinta1.jpg");
+pinta2 = imread("Imagens/Pinta2.jpeg");
+pinta3 = imread("Imagens/Pinta3.jpg");
+pinta4 = imread("Imagens/Pinta4.jpg");
 
-% Binariza a imagem por limiar
-bw = im2bw(Im, graythresh(Im));
-imshow(bw);
+% Segmenta as pintas do resto de suas respctivas imagens
+pinta1_seg = segmenta_pinta(pinta1, 10, 3, 4, 2000);
+pinta2_seg = segmenta_pinta(pinta2, 10, 3, 4, 1250);
+pinta3_seg = segmenta_pinta(pinta3, 10, 10, 4, 60);
+pinta4_seg = segmenta_pinta(pinta4, 10, 5, 4, 800);
 
-% Limpar imagem e achar os perímetros
-bw2 = imfill(bw, 'holes');
-imshow(bw2);
-bw3 = imopen(bw2, strel('disk', 3, 0));
-imshow(bw3);
-bw4 = bwareaopen(bw3, 40);
-imshow(bw4);
-bw5 = imclose(bw4, strel('disk', 10, 0));
-imshow(bw5);
-bw5_perim = (bwperim(bw5));
-imshow(imoverlay(original, bw5_perim, [1 0 0 ]));
 
-% Isolar mancha;
-nova = grayScale;
-nova(bw5==0) = 0;
-imshow(nova);
+% Computa a média de intensidade dos pixeis para cada uma das
+% segmentações de mancha de vitiligo feitas
+medias_pixeis_vitiligo = [
+						 mean(nonzeros(vitiligo1_seg))
+						 mean(nonzeros(vitiligo2_seg))
+						 mean(nonzeros(vitiligo3_seg))
+						 mean(nonzeros(vitiligo4_seg))];
 
-% Tirar a média dos pixeis
-media = mean(nonzeros(nova));
-media
+% Computa a média de intensidade dos píxeis para cada uma das
+% segmentações de pintas feitas
+medias_pixeis_pintas = [
+						 mean(nonzeros(pinta1_seg))
+						 mean(nonzeros(pinta2_seg))
+						 mean(nonzeros(pinta3_seg))
+						 mean(nonzeros(pinta4_seg))];
+
+% Computa a média geral de insensidade dos píxeis para as imagens de vitiligo
+media_geral_vitiligo = mean(medias_pixeis_vitiligo)
+
+% Computa a média geral de insensidade dos píxeis para as imagens de
+% pintas na pele
+media_geral_pintas   = mean(medias_pixeis_pintas)
