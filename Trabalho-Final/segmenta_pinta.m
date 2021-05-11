@@ -28,7 +28,6 @@ function mancha = segmenta_pinta (pinta, r1, H, r2, P)
 
   ## Limpar imagem e achar os perímetros
   bw2 = imopen(bw, strel('disk', r1, 0));
-  pause;
   bw3 = imclose(bw2, strel('disk', r1, 0));
   imshow(bw3);
   title('Imagem binarizada após tratementos morfológicos', 'fontsize', 16);

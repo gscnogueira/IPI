@@ -1,0 +1,26 @@
+#+title:Trabalho Final
+
+
+** Imagens:
+
+As imagens utilizadas neste projeto podem ser acessadas por meio dos seguintes links:
+
+- https://www.aboutkidshealth.ca/Article?contentid=2296&language=English
+
+- https://ijdvl.com/a-descriptive-study-to-characterize-segmental-vitiligo
+
+- https://vitiligoorganics.com/
+
+- https://health.clevelandclinic.org/how-to-spot-cancerous-moles/
+
+- https://www.ctvnews.ca/health/health-headlines/apps-to-id-melanoma-often-inaccurate-study-finds-1.1118033
+
+- https://brownfieldagnews.com/2015/05/farmers-face-skin-cancer-risks/
+
+- https://infotel.ca/newsitem/sun-spots-age-spots-is-there-anything-you-can-do-to-stop-brown-skin-patches/it22205
+
+** Função =haralickTextureFeatures.m=
+
+A função =haralickTextureFeatures.m= utilizada no arquivo =get_haralick_features.m= foi elaborada por Rune Monzel (runemonzel@gmail.com) e seu código foi obtido pelo seguinte endereço:
+
+- [[https://www.mathworks.com/matlabcentral/fileexchange/58769-haralicktexturefeatures]]
